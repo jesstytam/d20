@@ -4,4 +4,4 @@ FROM fedora:latest
 WORKDIR /app
 COPY . .
 RUN dnf install -y lua luarocks
-CMD ["lua" "lua/main.lua"]
+CMD ["lua", "lua/main.lua"]
