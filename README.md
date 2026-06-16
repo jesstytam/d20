@@ -9,13 +9,13 @@ In this project, I detail the steps taken (1) containerise an application with *
 - [CI/CD pipeline](#cicd-pipeline)
 - [Deployment](#deployment)
 
-## Create application 
+## :pencil: Create application 
 
 I used Lua to build a simple D20 dice rolling application, which basically generated a random integer between 1 and 20 (inclusive of both values), using `math.random()`
 
 To roll the dice, you will be instructed to press ENTER, which was enabled with `io.read()`. For the dice to roll multiple times without having to exit the application, I nested the `io.read()` command within a `while` loop, with an option to exit gracefully by typing `q`.
 
-## Containerisation
+## :whale: Containerisation
 Next, I containerised the application using Docker. This helped build the image, install the dependencies, and defined the commmand that runs the application.
 
 I ran the following in the terminal to build the Docker image:
@@ -51,10 +51,10 @@ CONTAINER ID   IMAGE     COMMAND              CREATED         STATUS         POR
 
 ```
 
-## CI/CD Pipeline
+## :octocat: CI/CD Pipeline
 
 coming soon...
 
-## Deployment
+## :cloud: Deployment
 
 coming soon...
