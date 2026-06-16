@@ -7,13 +7,7 @@ print("Press ENTER to roll your D20!")
 --generate a random value between 1 & 20
 --do NOT set seed!
 
-function roll_d20()
-
-    roll_value = math.random(1, 20)
-    roll_value_int = tonumber(roll_value)
-    return roll_value_int
-
-end
+local dice = require("lua.dice")
 
 --roll d20
 
@@ -26,7 +20,7 @@ while true do
         break
     end
 
-    local dice_value = roll_d20() --set value variable
+    local dice_value = dice.roll_d20() --set value variable
 
     print(dice_value, "\n")
 
