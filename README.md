@@ -1,6 +1,6 @@
 # :game_die: Lua D20 dice rolling application
 
-In this project, I detail the steps taken (1) containerise an application with **Docker**, (2) implement a simple CI/CD pipeline with **GitHub Actions**, and (3) deploy it on **AWS**.
+In this project, I detail the steps taken (1) containerise an application with **Docker**, (2) implement a simple CI/CD pipeline with **GitHub Actions**, and (3) deploy it on **Azure**.
 
 ## Table of Contents
 
@@ -13,10 +13,22 @@ In this project, I detail the steps taken (1) containerise an application with *
 
 I used Lua to build a simple D20 dice rolling application that runs in the terminal, which basically generated a random integer between 1 and 20 (inclusive of both values), using `math.random()`
 
-To roll the dice, you will be instructed to press ENTER, which was enabled with `io.read()`. For the dice to roll multiple times without having to exit the application, I nested the `io.read()` command within a `while` loop, with an option to exit gracefully by typing `q`.
+To roll the dice, you will be instructed to press `ENTER`, which was enabled with `io.read()`. For the dice to roll multiple times without having to exit the application, I nested the `io.read()` command within a `while` loop, with an option to exit gracefully by typing `q`.
 
 ## :whale: Containerisation
+
 Next, I containerised the application using Docker. This helped build the image, install the dependencies, and defined the commmand that runs the application.
+
+The Dockerfile contains the following:
+```
+# syntax=docker/dockerfile:1
+
+FROM fedora:latest
+WORKDIR /app
+COPY . .
+RUN dnf install -y lua luarocks
+CMD ["lua", "lua/main.lua"]
+```
 
 I ran the following in the terminal to build the Docker image:
 ```
@@ -53,7 +65,34 @@ CONTAINER ID   IMAGE     COMMAND              CREATED         STATUS         POR
 
 ## :octocat: CI/CD Pipeline
 
-coming soon...
+I created a GitHub Actions workflow was created to automatically build the Docker image whenever code is pushed to the `main` branch or a pull request is opened. The workflow executes on an Ubuntu runner and performs the following steps:
+
+1. Checks out the repository.
+2. Builds the Docker image using the Dockerfile.
+3. Reports the build status through the GitHub Actions interface.
+
+The yaml file contains the following:
+```
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build -t d20 .
+
+```
 
 ## :cloud: Deployment
 
