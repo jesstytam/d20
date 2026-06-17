@@ -96,7 +96,10 @@ jobs:
 
 ## :cloud: Deployment
 
-create container register
+create container register & resource group
+create client secret
+add azure scret credentials to github actions
+
 
 in github actions:
 
