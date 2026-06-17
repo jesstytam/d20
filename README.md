@@ -161,3 +161,4 @@ az containerapp up \
   --registry-username <username> \
   --registry-password <password>
 ```
+![successful_deployment](“/assets/Screenshot_20260617_195240_redact.png”)
