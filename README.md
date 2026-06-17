@@ -96,9 +96,7 @@ jobs:
 
 ## :cloud: Deployment
 
-create container register & resource group
-create client secret on azure
-add repository secret to github actions for authentication with azure
+I then deployed the application on Microsoft Azure, using their Container Register. First, I created a new contained register resource and resource group for the image to be pushed. Then, I created a new client secret in order to authentical with Azure during GitHub Actions.
 
 
 in github actions:
