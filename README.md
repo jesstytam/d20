@@ -2,6 +2,8 @@
 
 In this project, I detail the steps taken (1) containerise an application with **Docker**, (2) implement a simple CI/CD pipeline with **GitHub Actions**, and (3) deploy it on **Azure**.
 
+![successful_deployment](assets/demo.png)
+
 ## Table of Contents
 
 - [Create application](#create-application)
@@ -162,4 +164,4 @@ az containerapp up \
   --registry-password <password>
 ```
 which gave the following output, showing that the app was deployed successfully.
-![successful_deployment](assets/Screenshot_20260617_195240_redact.png)
+![successful_deployment](assets/deploy.png)
