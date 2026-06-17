@@ -1,4 +1,4 @@
-# :game_die: Lua D20 dice rolling application
+# :game_die: Lua D20 dice rolling application (WIP)
 
 In this project, I detail the steps taken (1) containerise an application with **Docker**, (2) implement a simple CI/CD pipeline with **GitHub Actions**, and (3) deploy it on **Azure**.
 
@@ -94,15 +94,57 @@ jobs:
 
 ```
 
-## :cloud: Deployment
+## :man_technologist: Deployment
 
-I then deployed the application on Microsoft Azure, using their Container Register. First, I created a new contained register resource and resource group for the image to be pushed. Then, I created a new client secret in order to authentical with Azure during GitHub Actions.
+### Pushing Docker image
 
-assign github repo as a contributor in the subscription IAM
+Before deploying the application as a web app, I first pushed the Docker image to Microsoft Azure, using their Container Registry resource. This involved the following steps:
 
-push image to container registry via its login server
+1. Create a new Container Registry resource and resource group for the image to be pushed.
+2. Create a new client secret in order to authenticate with Azure during GitHub Actions.
+3. Store the application credentials as a GitHub repository secret (AZURE_CREDENTIALS).
+4. Register a new app under App Registrations, this will be the identity of GitHub repository.
+5. Assign this application as a contributor in the subscription IAM.
 
-in github actions:
+Since I was now building the application on Azure instead of locally, I updated the GitHub Actions workflow accordingly.
+When updating the YAML file, remember to log into *both* Azure and Azure Container Registry like the following:
+```
+steps:
 
-push image to azure container register
-deploy image
+    - uses: actions/checkout@v4
+
+    ~~- name: Build the Docker image~~
+      ~~run: docker build -t d20 .~~
+
+    - name: Log in to Azure
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Log in to ACR
+      run: az acr login --name d20registry
+
+    - name: Build image
+      run: docker build -t d20registry.azurecr.io/d20:latest .
+
+    - name: Push image
+      run: docker push d20registry.azurecr.io/d20:latest
+```
+
+To verify that the Docker image has been deployed properly, I ran 
+```
+az acr repository list \
+  --name d20registry \
+  --output table
+```
+
+which will give the output
+```
+Result
+--------
+d20
+```
+
+### Web app deployment
+
+coming soon...
