@@ -152,12 +152,12 @@ To run the app on Azure, simple run
 az containerapp up \
   --name d20-app \
   --resource-group portfolio-rg \
-  --location australiasoutheast \
+  --location <location> \
   --environment d20-env \
-  --image d20registry.azurecr.io/d20:latest \
+  --image <registry>.azurecr.io/d20:latest \
   --target-port 80 \
   --ingress external \
-  --registry-server d20registry.azurecr.io \
+  --registry-server <registry>.azurecr.io \
   --registry-username <username> \
   --registry-password <password>
 ```
