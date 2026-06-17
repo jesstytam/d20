@@ -25,8 +25,8 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Log in to ACR
-      run: az acr login --name jesstamd20acr
+    # - name: Log in to ACR
+    #   run: az acr login --name jesstamd20acr
 
     - name: Build image
       run: docker build -t jesstamd20acr.azurecr.io/d20:latest .
