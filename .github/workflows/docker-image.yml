@@ -29,7 +29,7 @@ jobs:
     #   run: az acr login --name jesstamd20acr
 
     - name: Build image
-      run: docker build -t jesstamd20acr.azurecr.io/d20:latest .
+      run: docker build -t d20registry.azurecr.io/d20:latest .
 
     - name: Push image
-      run: docker push jesstamd20acr.azurecr.io/d20:latest
+      run: docker push d20registry.azurecr.io/d20:latest

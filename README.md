@@ -98,6 +98,7 @@ jobs:
 
 I then deployed the application on Microsoft Azure, using their Container Register. First, I created a new contained register resource and resource group for the image to be pushed. Then, I created a new client secret in order to authentical with Azure during GitHub Actions.
 
+assign github repo as a contributor in the subscription IAM
 
 in github actions:
 
