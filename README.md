@@ -97,13 +97,11 @@ jobs:
 ## :cloud: Deployment
 
 create container register & resource group
-create client secret
-add azure scret credentials to github actions
+create client secret on azure
+add repository secret to github actions for authentication with azure
 
 
 in github actions:
-
-create client secret on azure
 
 push image to azure container register
 deploy image
