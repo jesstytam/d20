@@ -100,6 +100,8 @@ I then deployed the application on Microsoft Azure, using their Container Regist
 
 assign github repo as a contributor in the subscription IAM
 
+push image to container registry via its login server
+
 in github actions:
 
 push image to azure container register
