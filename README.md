@@ -88,17 +88,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build -t d20 .
 
 ```
 
-## :man_technologist: Deployment
+## :man_technologist: Cloud deployment
 
 ### Pushing Docker image
 
-Before deploying the application as a web app, I first pushed the Docker image to Microsoft Azure, using their Container Registry resource. This involved the following steps:
+Before deploying the application, I first pushed the Docker image to Microsoft Azure, using their Container Registry resource. This involved the following steps:
 
 1. Create a new Container Registry resource and resource group for the image to be pushed.
 2. Create a new client secret in order to authenticate with Azure during GitHub Actions.
@@ -106,15 +107,14 @@ Before deploying the application as a web app, I first pushed the Docker image t
 4. Register a new app under App Registrations, this will be the identity of GitHub repository.
 5. Assign this application as a contributor in the subscription IAM.
 
-Since I was now building the application on Azure instead of locally, I updated the GitHub Actions workflow accordingly.
-When updating the YAML file, remember to log into *both* Azure and Azure Container Registry like the following:
+Since I was now building the application on Azure instead of locally, I updated the GitHub Actions workflow accordingly. When updating the YAML file, remember to log into *both* Azure and Azure Container Registry. The updated file looks like the following from `steps`:
 ```
 steps:
 
     - uses: actions/checkout@v4
 
-    ~~- name: Build the Docker image~~
-      ~~run: docker build -t d20 .~~
+    ~- name: Build the Docker image~
+      ~run: docker build -t d20 .~
 
     - name: Log in to Azure
       uses: azure/login@v2
@@ -145,6 +145,19 @@ Result
 d20
 ```
 
-### Web app deployment
+### Deploy and run
 
-coming soon...
+To run the app on Azure, simple run
+```
+az containerapp up \
+  --name d20-app \
+  --resource-group portfolio-rg \
+  --location australiasoutheast \
+  --environment d20-env \
+  --image d20registry.azurecr.io/d20:latest \
+  --target-port 80 \
+  --ingress external \
+  --registry-server d20registry.azurecr.io \
+  --registry-username <username> \
+  --registry-password <password>
+```
