@@ -63,7 +63,7 @@ CONTAINER ID   IMAGE     COMMAND              CREATED         STATUS         POR
 
 ```
 
-## :octocat: CI/CD Pipeline
+## :wrench: CI/CD Pipeline
 
 I created a GitHub Actions workflow was created to automatically build the Docker image whenever code is pushed to the `main` branch or a pull request is opened. The workflow executes on an Ubuntu runner and performs the following steps:
 
@@ -96,4 +96,11 @@ jobs:
 
 ## :cloud: Deployment
 
-coming soon...
+create container register
+
+in github actions:
+
+create client secret on azure
+
+push image to azure container register
+deploy image
