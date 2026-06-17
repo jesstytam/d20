@@ -161,4 +161,5 @@ az containerapp up \
   --registry-username <username> \
   --registry-password <password>
 ```
+which gave the following output, showing that the app was deployed successfully.
 ![successful_deployment](assets/Screenshot_20260617_195240_redact.png)
