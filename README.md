@@ -11,7 +11,7 @@ In this project, I detail the steps taken (1) containerise an application with *
 
 ## :pencil: Create application 
 
-I used Lua to build a simple D20 dice rolling application, which basically generated a random integer between 1 and 20 (inclusive of both values), using `math.random()`
+I used Lua to build a simple D20 dice rolling application that runs in the terminal, which basically generated a random integer between 1 and 20 (inclusive of both values), using `math.random()`
 
 To roll the dice, you will be instructed to press ENTER, which was enabled with `io.read()`. For the dice to roll multiple times without having to exit the application, I nested the `io.read()` command within a `while` loop, with an option to exit gracefully by typing `q`.
 
