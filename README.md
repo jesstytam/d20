@@ -13,7 +13,7 @@ In this project, I detail the steps taken (1) containerise an application with *
 - [Create application](#create-application)
 - [Containerisation](#containerisation)
 - [CI/CD pipeline](#cicd-pipeline)
-- [Deployment](#deployment)
+- [Cloud deployment](#cloud-deployment)
 
 ## :pencil: Create application 
 
