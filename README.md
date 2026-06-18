@@ -1,4 +1,8 @@
-# :game_die: Lua D20 dice rolling application (WIP)
+# :game_die: Lua D20 dice rolling application
+
+<p align="left">
+  <a href="/github/actions/workflow/status/:user/:repo/:workflow"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/jesstytam/d20/.github%2Fworkflows%2Fdocker-image.yml" /></a>
+</p>
 
 In this project, I detail the steps taken (1) containerise an application with **Docker**, (2) implement a simple CI/CD pipeline with **GitHub Actions**, and (3) deploy it on **Azure**.
 
@@ -115,8 +119,8 @@ steps:
 
     - uses: actions/checkout@v4
 
-    ~- name: Build the Docker image~
-      ~run: docker build -t d20 .~
+    ~~- name: Build the Docker image
+      run: docker build -t d20 .~~
 
     - name: Log in to Azure
       uses: azure/login@v2
